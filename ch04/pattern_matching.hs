@@ -22,3 +22,7 @@ second :: (a,b,c) -> b
 second (_, x, _) = x
 third :: (a,b,c) -> c
 third (_, _, x) = x
+
+head' :: [a] -> a
+head' [] = error "Can't call head on an empty list, stupid!"
+head' (x:_) = x
