@@ -6,7 +6,8 @@ removeNonUpperCase st = [ c | c <- st, c `elem` ['A'..'Z']]
 -- Int stands for integer. It’s used for whole numbers. 7 can be an Int but 7.2
 -- cannot. Int is bounded, which means that it has a minimum and a maximum
 -- value. Usually on 32-bit machines the maximum possible Int is 2147483647
--- and the minimum is -2147483648.
+-- and the minimum is -2147483648. On 64-bit it's 9223372036854775807 to
+-- -9223372036854775808
 addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y + z
 
