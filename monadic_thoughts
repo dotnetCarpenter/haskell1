@@ -1,0 +1,15 @@
+Monad thoughts
+
+Examples are given for Monad: function M(a) { return this.Value = a }
+Code is written in either JavaScript or Haskell
+
+bindM takes two arguments, both are functions. It binds them like a generator by calling the first function and wrap the result in a Monad contructer (M) and call the second function with M.
+(\a -> k a `bindM` ((\b -> h b))
+In JavaScript: TODO
+
+unitM takes one argument, which is a Value (e.i. Number 21), and return Monad (M).
+In JavaScript: var unitM = a => new M(a)
+
+showM gets the Value of a Monad and takes a Monad as argument. If the Monad has a Value property holding the value (e.i. 42) then it can be written:
+showM :: M Value -> String
+or in JavaScript: function showM (M) { return String(M.Value) } or var showM = M => String(M.Value)
