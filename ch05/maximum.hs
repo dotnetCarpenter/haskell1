@@ -16,3 +16,8 @@ maximum' (x:xs)
 -- 1), we obviously get back 5. So now we know that the maximum of [5,1] is 5.
 -- We go up one step again where we had 2 and [5,1]. Comparing 2 with the
 -- maximum of [5,1], which is 5, we choose 5.
+
+maximum2 :: (Ord a) => [a] -> a
+maximum2 [] = error "maximum of empty list"
+maximum2 [x] = x
+maximum2 (x:xs) = max x (maximum2 xs)
