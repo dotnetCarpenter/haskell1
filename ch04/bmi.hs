@@ -6,6 +6,4 @@ bmiTell weight height
   | otherwise     = "You're a whale, congratulations! bmi: " ++ show bmi
   where
     bmi = weight / height ^ 2
-    skinny = 18.5
-    normal = 25
-    fat    = 30
+    (skinny, normal, fat) = (18.5, 25, 30)
