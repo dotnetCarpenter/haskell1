@@ -21,4 +21,22 @@ zip' _ [] = []
 zip' [] _ = []
 zip' (x:xs) (y:ys) = (x,y):zip' xs ys
 
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs)
+    | a == x    = True
+    | otherwise = a `elem'` xs
+
 -- TODO: implement a duplicate function that finds duplicates in a list
+duplicate :: (Eq a) => [a] -> [a]
+duplicate [] = []
+duplicate (x:xs)
+    | elem' x xs = x: duplicate xs
+    | otherwise = duplicate xs
+
+
+
+    --where n = length (x:xs)
+--duplicate elem' (head (x:xs)) (x:xs) = take
+    --where n = if elem' x xs then x else
+--[2,2,3,2]
