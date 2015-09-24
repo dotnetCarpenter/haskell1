@@ -13,4 +13,7 @@ reverse' :: [a] -> [a]
 reverse' [] = []
 reverse' (x:xs) = reverse' xs ++ [x]
 
+repeat' :: a -> [a]
+repeat' x = x:repeat' x
+
 -- TODO: implement a duplicate function that finds duplicates in a list
