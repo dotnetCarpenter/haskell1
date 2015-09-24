@@ -26,6 +26,11 @@ third (_, _, x) = x
 head' :: [a] -> a
 head' [] = error "Can't call head on an empty list, stupid!"
 head' (x:_) = x
+-- the head' [] pattern match is actually syntactic sugar for the following:
+head2 :: [a] -> a
+head2 xs = case xs of
+  [] -> error "No head for empty lists!"
+  (x:_) -> x
 
 tell :: (Show a) => [a] -> String
 tell [] = "The list is empty"
