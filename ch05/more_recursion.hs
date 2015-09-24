@@ -27,16 +27,17 @@ elem' a (x:xs)
     | a == x    = True
     | otherwise = a `elem'` xs
 
--- TODO: implement a duplicate function that finds duplicates in a list
+-- duplicate function that finds duplicates in a list
+-- and return a new list with the duplicated items
 duplicate :: (Eq a) => [a] -> [a]
 duplicate [] = []
 duplicate (x:xs)
-    | elem' x xs = x: duplicate xs
+    | elem' x xs = x: duplicate [a | a <- xs, a /= x]
     | otherwise = duplicate xs
 
-
-
-    --where n = length (x:xs)
---duplicate elem' (head (x:xs)) (x:xs) = take
-    --where n = if elem' x xs then x else
---[2,2,3,2]
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerSorted = quicksort [a | a <- xs, a <= x]
+      biggerSorted = quicksort [a | a <- xs, a > x]
+  in  smallerSorted ++ [x] ++ biggerSorted
