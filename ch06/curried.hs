@@ -2,3 +2,7 @@
 -- that take the second parameter. Here is an example with "compare"
 compareWithHundred :: (Num a, Ord a) => a -> Ordering
 compareWithHundred = compare 100 -- compare takes two parameter, e.i. compare 100 101
+
+-- infix partial applied function
+divideByTen :: (Floating a) => a -> a
+divideByTen = (/10)
