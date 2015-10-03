@@ -12,7 +12,7 @@ addThree :: Int -> Int -> Int -> Int
 addThree x y z = x + y + z
 
 -- Integer
--- stands for, er . . . also integer. The main difference is that it’s not
+-- stands for, er... also integer. The main difference is that it’s not
 -- bounded so it can be used to represent really really big numbers. I mean like
 -- really big. Int, however, is more efficient.
 factorial :: Integer -> Integer
