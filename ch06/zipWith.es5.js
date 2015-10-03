@@ -11,9 +11,11 @@ var multiply = function multiply(a, b) {
 var zipWith = function zipWith(f, xs, ys) {
   if (xs.length == 0) return [];
   if (ys.length == 0) return [];
-  var x = xs.shift();
-  var y = ys.shift();
-  return [f(x, y)].concat(zipWith(f, xs, ys));
+  var xsClone = xs.slice(0);
+  var ysClone = ys.slice(0);
+  var x = xsClone.shift();
+  var y = ysClone.shift();
+  return [f(x, y)].concat(zipWith(f, xsClone, ysClone));
 };
 
 var replicate = function replicate(i, a) {
