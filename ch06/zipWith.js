@@ -5,8 +5,8 @@ var add = (a, b) => a + b
 var multiply = (a, b) => a * b
 
 var zipWith = (f, xs, ys) => {
-  if(xs.length == 0) return []
-  if(ys.length == 0) return []
+  if(xs.length === 0) return []
+  if(ys.length === 0) return []
   let xsClone = xs.slice(0)
   let ysClone = ys.slice(0)
   let x = xsClone.shift()
