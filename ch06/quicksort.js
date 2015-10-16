@@ -10,6 +10,4 @@ var quicksort = a => {
   return smallerSorted.concat([x]).concat(biggerSorted)
 }
 
-module.exports = {
-  quicksort: quicksort
-}
+module.exports = quicksort
