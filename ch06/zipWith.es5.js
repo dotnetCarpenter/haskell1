@@ -1,24 +1,20 @@
 "use strict";
 
-var add = function add(a, b) {
-  return a + b;
+var add = (a, b) => a + b;
+
+var multiply = (a, b) => a * b;
+
+var zipWith = (f, xs, ys) => {
+  if (xs.length === 0) return [];
+  if (ys.length === 0) return [];
+  let x = xs[0],
+      y = ys[0];
+  xs = xs.slice(1);
+  ys = ys.slice(1);
+  return [f(x, y)].concat(zipWith(f, xs, ys));
 };
 
-var multiply = function multiply(a, b) {
-  return a * b;
-};
-
-var zipWith = function zipWith(f, xs, ys) {
-  if (xs.length == 0) return [];
-  if (ys.length == 0) return [];
-  var xsClone = xs.slice(0);
-  var ysClone = ys.slice(0);
-  var x = xsClone.shift();
-  var y = ysClone.shift();
-  return [f(x, y)].concat(zipWith(f, xsClone, ysClone));
-};
-
-var replicate = function replicate(i, a) {
+var replicate = (i, a) => {
   if (i === 0) return [];
   return [a].concat(replicate(--i, a));
 };

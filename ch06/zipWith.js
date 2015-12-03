@@ -7,11 +7,11 @@ var multiply = (a, b) => a * b
 var zipWith = (f, xs, ys) => {
   if(xs.length === 0) return []
   if(ys.length === 0) return []
-  let xsClone = xs.slice(0)
-  let ysClone = ys.slice(0)
-  let x = xsClone.shift()
-  let y = ysClone.shift()
-  return [f(x, y)].concat(zipWith(f, xsClone, ysClone))
+  let x = xs[0],
+      y = ys[0]
+  xs = xs.slice(1)
+  ys = ys.slice(1)
+  return [f(x, y)].concat(zipWith(f, xs, ys))
 }
 
 var replicate = (i, a) => {
