@@ -20,7 +20,12 @@ function take(n, a) {
   return [x].concat(take(n-1, xs))
 }
 
-
+// a - > [b] -> [b]
+function take(n, a, accu = []) {
+	if(a.length === 0 || n === 0) return accu
+	accu.push(a[0])
+	return take( n - 1, a.slice(1), accu ) // tail call
+}
 
 console.log(take(0,[1]))
 console.log(take(4,[]))
