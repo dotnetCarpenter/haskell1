@@ -23,7 +23,7 @@ const duplicate = a => {
   let x = ax.shift()
   return elem2(x, ax)
     ? [x].concat(duplicate(ax.filter(b => b != x )))
-    : [].concat(duplicate(ax))
+    : duplicate(ax)
 }
 
 module.exports = {
@@ -32,8 +32,8 @@ module.exports = {
 }
 
 /*
-debugger;*/
+debugger;
 console.log(
   duplicate([2,54,2,3,42,5,43,67,233,42,42,53,5,32,6,9,5])
 )
-
+*/

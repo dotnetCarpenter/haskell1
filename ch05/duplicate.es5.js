@@ -1,38 +1,35 @@
 "use strict";
 
+// as of v5.10 run with node --harmony_destructuring duplicate.js
+
 /* elem :: (Eq a) => a -> [a] -> Bool */
-var elem = function elem(_x, _x2) {
-  var _left;
 
-  var _again = true;
+function _toArray(arr) { return Array.isArray(arr) ? arr : Array.from(arr); }
 
-  _function: while (_again) {
-    var a = _x,
-        b = _x2;
-    x = undefined;
-    _again = false;
+var elem2 = function elem2(a, _ref) {
+  var _ref2 = _toArray(_ref),
+      b = _ref2[0],
+      c = _ref2.slice(1);
 
-    if (b.length === 0) return false;
-    var x = b[0];
+  if (a == b) return true;
+  if (c.length === 0) return false;else return elem(a, c);
+};
 
-    if (_left = a == x) {
-      return _left;
-    }
-
-    _x = a;
-    _x2 = b.slice(1);
-    _again = true;
-    continue _function;
-  }
+/* elem :: (Eq a) => a -> [a] -> Bool */
+var elem = function elem(a, b) {
+  if (b.length === 0) return false;
+  var x = b[0]; // NOTE: b.shift() mutates the array hence making the array unusable in other functions
+  return a == x || elem(a, b.slice(1));
 };
 /* duplicate :: (Eq a) => [a] -> [a] */
 var duplicate = function duplicate(a) {
-  console.log("first", a);
+  //console.log("steps",a)
   if (a.length === 0) return [];
-  var x = a[0];
-  return elem(x, a) ? [x].concat(duplicate(a.filter(function (b) {
+  var ax = a.slice(0); // create new array
+  var x = ax.shift();
+  return elem2(x, ax) ? [x].concat(duplicate(ax.filter(function (b) {
     return b != x;
-  }))) : [].concat(duplicate(a));
+  }))) : duplicate(ax);
 };
 
 module.exports = {
@@ -43,6 +40,7 @@ module.exports = {
 /*
 debugger;
 console.log(
-  duplicate([2,54,2,3,42,5,43,67,233,42,42,53,5,32,6,9])
+  duplicate([2,54,2,3,42,5,43,67,233,42,42,53,5,32,6,9,5])
 )
 */
+
